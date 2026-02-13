@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stocknet - Detalle de pedido</title>
+<link rel="stylesheet" th:href="@{/css/pedidos-detalle.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/inventario}">Inventario</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-title">Detalle del pedido</div>
+
+	<div class="card details">
+
+	    <div class="row">
+	        <span>ID</span>
+	        <strong th:text="${pedido.id}">1</strong>
+	    </div>
+
+	    <div class="row">
+	        <span>Cliente</span>
+	        <strong th:text="${pedido.cliente}">Juan Pérez</strong>
+	    </div>
+
+	    <div class="row">
+	        <span>Fecha</span>
+	        <strong th:text="${pedido.fecha}">2026-02-13</strong>
+	    </div>
+
+	    <div class="row">
+	        <span>Total</span>
+	        <strong th:text="'S/ ' + ${#numbers.formatDecimal(pedido.total,1,2)}">
+	            S/ 120.00
+	        </strong>
+	    </div>
+
+	    <div class="row">
+	        <span>Estado</span>
+	        <strong th:text="${pedido.estado}"
+	                th:class="'badge ' + ${pedido.estado.toLowerCase()}">
+	            REGISTRADO
+	        </strong>
+	    </div>
+
+	    <div class="actions">
+	        <a class="btn-secondary" th:href="@{/pedidos}">Volver</a>
+	    </div>
+
+	</div>
+
+</main>
+
+</body>
+</html>

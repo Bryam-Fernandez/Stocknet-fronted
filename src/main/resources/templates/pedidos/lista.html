@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stocknet - Pedidos</title>
+<link rel="stylesheet" th:href="@{/css/pedidos-lista.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/inventario}">Inventario</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-header">
+        <div class="page-title">Pedidos</div>
+        <a class="btn-primary" th:href="@{/pedidos/nuevo}">+ Nuevo pedido</a>
+    </div>
+
+    <div class="card">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+			<tbody>
+			<tr th:each="p : ${pedidos}">
+			    <td th:text="${p.id}">1</td>
+			    <td th:text="${p.cliente}">Cliente</td>
+			    <td th:text="${p.fecha}">2026-02-13</td>
+			    <td th:text="'S/ ' + ${#numbers.formatDecimal(p.total,1,2)}">S/ 0.00</td>
+			    <td>
+			        <span th:text="${p.estado}"
+			              th:class="'badge ' + ${p.estado.toLowerCase()}">
+			        </span>
+			    </td>
+			    <td>
+			        <a class="link"
+			           th:href="@{/pedidos/{id}(id=${p.id})}">
+			            Ver
+			        </a>
+			    </td>
+			</tr>
+
+			<tr th:if="${#lists.isEmpty(pedidos)}">
+			    <td colspan="6">No hay pedidos registrados</td>
+			</tr>
+			</tbody>
+        </table>
+
+    </div>
+
+</main>
+
+</body>
+</html>

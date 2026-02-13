@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stocknet - Inventario</title>
+<link rel="stylesheet" th:href="@{/css/inventario-lista.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/inventario}">Inventario</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-header">
+        <div class="page-title">Inventario</div>
+        <a class="btn-primary" th:href="@{/inventario/nuevo}">+ Nuevo producto</a>
+    </div>
+
+    <div class="card">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+			<tbody>
+			    <tr th:each="producto : ${productos}">
+			        <td th:text="${producto.id}"></td>
+			        <td th:text="${producto.nombre}"></td>
+			        <td>
+			            <span class="badge ok" th:text="${producto.stock}"></span>
+			        </td>
+					<td th:text="'S/ ' + ${producto.precio}"></td>
+			        <td>
+			            <a class="link"
+			               th:href="@{/inventario/editar/{id}(id=${producto.id})}">
+			               Editar
+			            </a>
+			        </td>
+			    </tr>
+			</tbody>
+        </table>
+
+    </div>
+
+</main>
+
+</body>
+</html>

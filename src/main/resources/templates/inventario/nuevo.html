@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Stocknet - Nuevo producto</title>
+    <link rel="stylesheet" th:href="@{/css/inventario-nuevo.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/inventario}">Inventario</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-title">Nuevo producto</div>
+
+    <div class="card">
+
+		<form class="form"
+		      th:action="@{/inventario/guardar}"
+		      th:object="${producto}"
+		      method="post">
+
+		    <div class="field">
+		        <label>Nombre del producto</label>
+		        <input type="text"
+		               th:field="*{nombre}"
+		               placeholder="Ej: Teclado mecánico"
+		               required>
+		    </div>
+
+		    <div class="field">
+		        <label>Stock</label>
+		        <input type="number"
+		               th:field="*{stock}"
+		               placeholder="0"
+		               required>
+		    </div>
+
+		    <div class="field">
+		        <label>Precio</label>
+		        <input type="number"
+		               step="0.01"
+		               th:field="*{precio}"
+		               placeholder="0.00"
+		               required>
+		    </div>
+
+		    <div class="actions">
+		        <a class="btn-secondary" th:href="@{/inventario}">Cancelar</a>
+		        <button class="btn-primary" type="submit">Guardar</button>
+		    </div>
+
+		</form>
+
+    </div>
+
+</main>
+
+</body>
+</html>
