@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.2</version>
+      <version>3.2.5</version>
         <relativePath/>
     </parent>
 
@@ -22,24 +22,35 @@
         <java.version>21</java.version>
 
         <!--
-        Spring Cloud NO se usa en este proyecto frontend.
         Se deja comentado para cuando se integre con microservicios.
         -->
         <!-- <spring-cloud.version>2025.1.0</spring-cloud.version> -->
     </properties>
+    
+     <dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-dependencies</artifactId>
+              <version>2023.0.1</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+      </dependencies>
+  </dependencyManagement>
 
     <dependencies>
-
-        <!-- ================================= -->
-        <!-- DEPENDENCIAS QUE SÍ USAS AHORA   -->
-        <!-- (Frontend con Thymeleaf)         -->
-        <!-- ================================= -->
 
         <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        
+         <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      </dependency>
 
         <!-- Thymeleaf -->
         <dependency>
@@ -47,7 +58,7 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- DevTools (opcional, útil para maquetar vistas) -->
+        <!-- DevTools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -56,12 +67,9 @@
         </dependency>
 
 
-        <!-- ============================================= -->
-        <!-- DEPENDENCIAS QUE NO NECESITAS AHORA           -->
-        <!-- (comentadas para este frontend)               -->
-        <!-- ============================================= -->
+        <!-- DEPENDENCIAS AUN NO UTILIZADAS     -->
 
-        <!-- JPA (no hay base de datos en el frontend) -->
+        <!-- JPA -->
         <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,7 +77,7 @@
         </dependency>
         -->
 
-        <!-- Seguridad (JWT vive en backend) -->
+        <!-- Seguridad -->
         <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,7 +85,7 @@
         </dependency>
         -->
 
-        <!-- SOAP / Web Services (no se usa en este proyecto) -->
+        <!-- SOAP / Web Services -->
         <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -85,7 +93,7 @@
         </dependency>
         -->
 
-        <!-- Eureka Client (el frontend no se registra) -->
+        <!-- Eureka Client -->
         <!--
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -93,7 +101,7 @@
         </dependency>
         -->
 
-        <!-- MySQL (no hay BD en frontend) -->
+        <!-- MySQL -->
         <!--
         <dependency>
             <groupId>com.mysql</groupId>
@@ -140,10 +148,8 @@
     </dependencies>
 
 
-    <!-- ================================================= -->
-    <!-- SPRING CLOUD (NO SE USA EN ESTE FRONTEND)        -->
+    <!-- SPRING CLOUD -->
     <!-- Se deja comentado para futura integración        -->
-    <!-- ================================================= -->
 
     <!--
     <dependencyManagement>
