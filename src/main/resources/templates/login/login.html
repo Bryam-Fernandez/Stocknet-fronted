@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Stocknet - Login</title>
-<link rel="stylesheet" th:href="@{/css/login.css}">
+	<meta charset="UTF-8">
+	<title>Stocknet - Login</title>
+	<link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
+
 <body>
 
-<div class="login-wrapper">
+	<div class="login-wrapper">
 
-    <div class="login-card">
+		<div class="login-card">
 
-        <h1>Stocknet</h1>
-        <p>Acceso al sistema</p>
+			<h1>Stocknet</h1>
+			<p>Acceso al sistema</p>
 
-        <form th:action="@{/login}" method="post">
+			<form th:action="@{/login}" method="post" th:object="${loginRequest}">
+				<label>Usuario</label>
+				<input type="text" th:field="*{username}" required>
 
-            <label>Usuario</label>
-            <input type="text" name="usuario" required>
+				<label>Contraseña</label>
+				<input type="password" th:field="*{password}" required>
 
-            <label>Contraseña</label>
-            <input type="password" name="password" required>
+				<button type="submit">Entrar</button>
 
-            <button type="submit">Entrar</button>
+				<div th:if="${error}" style="color:red; margin-top:10px;">
+					Usuario o contraseña incorrectos
+				</div>
+			</form>
 
-            <div th:if="${param.error}" style="color:red; margin-top:10px;">
-                Usuario o contraseña incorrectos
-            </div>
+			<p>
+				<a th:href="@{/register}" style="color:#38bdf8;">¿No tienes cuenta? Registrarse</a>
+			</p>
 
-        </form>
+		</div>
 
-    </div>
-
-</div>
+	</div>
 
 </body>
+
 </html>

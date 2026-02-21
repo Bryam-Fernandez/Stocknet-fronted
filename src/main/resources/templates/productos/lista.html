@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-	<meta charset="UTF-8">
-	<title>Stocknet - Productos</title>
-	<link rel="stylesheet" th:href="@{/css/productos-lista.css}">
+    <meta charset="UTF-8">
+    <title>Stocknet - Productos</title>
+    <link rel="stylesheet" th:href="@{/css/lista.css}">
 </head>
-
 <body>
 
-	<header class="topbar">
-		<div class="logo">Stocknet</div>
-		<nav>
-			<a th:href="@{/dashboard}">Dashboard</a>
-			<a th:href="@{/pedidos}">Pedidos</a>
-			<a th:href="@{/inventario}">Inventario</a>
-			<a th:href="@{/login}">Login</a>
-		</nav>
-	</header>
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/reportes}">Reportes</a>
+        <a th:href="@{/logout}">Cerrar sesión</a>
+    </nav>
+</header>
 
-	<main class="container">
+<main class="container">
 
-		<div class="page-title">Productos</div>
+    <div class="page-header">
+        <div class="page-title">Productos</div>
+        <a class="btn-primary" th:href="@{/productos/nuevo}">+ Nuevo producto</a>
+    </div>
 
-		<div class="card">
+    <div class="card">
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Nombre</th>
-						<th>Precio</th>
-						<th>Stock</th>
-						<th>Estado</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="p : ${productos}">
-						<td th:text="${p.id}"></td>
-						<td th:text="${p.nombre}"></td>
-						<td th:text="'S/ ' + ${p.precio}"></td>
-						<td th:text="${p.stock}"></td>
-						<td th:text="${p.estado} ? 'Activo' : 'Inactivo'"></td>
-						<td>
-							<a th:href="@{/productos/{id}(id=${p.id})}">
-								Ver
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${productos}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.nombre}"></td>
+                    <td th:text="'S/ ' + ${#numbers.formatDecimal(p.precio,1,2)}"></td>
+                    <td th:text="${p.stock}"></td>
+                    <td>
+                        <span th:text="${p.estado} ? 'Activo' : 'Inactivo'"></span>
+                    </td>
+                    <td>
+                        <a th:href="@{/productos/{id}(id=${p.id})}">Ver</a>
+                    </td>
+                </tr>
 
-		</div>
+                <tr th:if="${#lists.isEmpty(productos)}">
+                    <td colspan="6">No hay productos registrados</td>
+                </tr>
+            </tbody>
+        </table>
 
-	</main>
+    </div>
+
+</main>
 
 </body>
-
 </html>
