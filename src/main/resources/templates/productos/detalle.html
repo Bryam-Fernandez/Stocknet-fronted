@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stocknet - Detalle producto</title>
+<link rel="stylesheet" th:href="@{/css/productos-detalle.css}">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">Stocknet</div>
+    <nav>
+        <a th:href="@{/dashboard}">Dashboard</a>
+        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/productos}">Productos</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="page-title">Detalle del producto</div>
+
+    <div class="card details">
+
+        <div class="row">
+            <span>ID</span>
+            <strong th:text="${producto.id}"></strong>
+        </div>
+
+        <div class="row">
+            <span>Nombre</span>
+            <strong th:text="${producto.nombre}"></strong>
+        </div>
+
+        <div class="row">
+            <span>Descripción</span>
+            <strong th:text="${producto.descripcion}"></strong>
+        </div>
+
+        <div class="row">
+            <span>Precio</span>
+            <strong th:text="'S/ ' + ${producto.precio}"></strong>
+        </div>
+
+        <div class="row">
+            <span>Stock</span>
+            <strong th:text="${producto.stock}"></strong>
+        </div>
+
+        <div class="row">
+            <span>Estado</span>
+            <strong th:text="${producto.estado} ? 'Activo' : 'Inactivo'"></strong>
+        </div>
+
+        <div class="actions">
+            <a class="btn-secondary" th:href="@{/productos}">Volver</a>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

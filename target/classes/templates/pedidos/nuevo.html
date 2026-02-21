@@ -29,36 +29,27 @@
 		      method="post">
 
 		    <div class="field">
-		        <label>Cliente</label>
-		        <input type="text"
-		               th:field="*{cliente}"
-		               placeholder="Ej: Juan Pérez"
-		               required>
-		    </div>
-
-		    <div class="field">
-		        <label>Fecha</label>
-		        <input type="date"
-		               th:field="*{fecha}"
-		               required>
-		    </div>
-
-		    <div class="field">
-		        <label>Total</label>
+		        <label>ID del cliente</label>
 		        <input type="number"
-		               step="0.01"
-		               th:field="*{total}"
+		               th:field="*{clientId}"
+		               placeholder="Ej: 1"
 		               required>
 		    </div>
 
 		    <div class="field">
-		        <label>Estado</label>
-		        <select th:field="*{estado}" required>
-		            <option value="">Seleccione un estado</option>
-		            <option value="Registrado">Registrado</option>
-		            <option value="Procesado">Procesado</option>
-		            <option value="Enviado">Enviado</option>
-		        </select>
+		        <label>ID del producto</label>
+		        <input type="number"
+		               th:field="*{productId}"
+		               placeholder="Ej: 3"
+		               required>
+		    </div>
+
+		    <div class="field">
+		        <label>Cantidad</label>
+		        <input type="number"
+		               th:field="*{cantidad}"
+		               min="1"
+		               required>
 		    </div>
 
 		    <div class="actions">

@@ -1,51 +1,31 @@
 package com.example.Stocknet_fronted.model;
 
+import java.math.BigDecimal;
+
 public class Producto {
 
     private Long id;
     private String nombre;
-    private int stock;
-    private double precio;
+    private String descripcion;
+    private BigDecimal precio;
+    private Integer stock;
+    private Boolean estado;
 
-    public Producto(Long id, String nombre, int stock, double precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.stock = stock;
-        this.precio = precio;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Producto() {
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public BigDecimal getPrecio() { return precio; }
+    public void setPrecio(BigDecimal precio) { this.precio = precio; }
 
-    public int getStock() {
-        return stock;
-    }
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+    public Boolean getEstado() { return estado; }
+    public void setEstado(Boolean estado) { this.estado = estado; }
 }

@@ -11,7 +11,7 @@
     <div class="logo">Stocknet</div>
     <nav>
         <a th:href="@{/dashboard}">Dashboard</a>
-        <a th:href="@{/pedidos}">Pedidos</a>
+        <a th:href="@{/productos}">Productos</a>
         <a th:href="@{/inventario}">Inventario</a>
         <a th:href="@{/login}">Login</a>
     </nav>
@@ -37,29 +37,24 @@
                     <th></th>
                 </tr>
             </thead>
-			<tbody>
-			<tr th:each="p : ${pedidos}">
-			    <td th:text="${p.id}">1</td>
-			    <td th:text="${p.cliente}">Cliente</td>
-			    <td th:text="${p.fecha}">2026-02-13</td>
-			    <td th:text="'S/ ' + ${#numbers.formatDecimal(p.total,1,2)}">S/ 0.00</td>
-			    <td>
-			        <span th:text="${p.estado}"
-			              th:class="'badge ' + ${p.estado.toLowerCase()}">
-			        </span>
-			    </td>
-			    <td>
-			        <a class="link"
-			           th:href="@{/pedidos/{id}(id=${p.id})}">
-			            Ver
-			        </a>
-			    </td>
-			</tr>
+            <tbody>
+                <tr th:each="p : ${pedidos}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.clientId}"></td>
+                    <td th:text="${p.createdAt}"></td>
+                    <td th:text="'S/ ' + ${#numbers.formatDecimal(p.total,1,2)}"></td>
+                    <td>
+                        <span th:text="${p.status}"></span>
+                    </td>
+                    <td>
+                        <a th:href="@{/pedidos/{id}(id=${p.id})}">Ver</a>
+                    </td>
+                </tr>
 
-			<tr th:if="${#lists.isEmpty(pedidos)}">
-			    <td colspan="6">No hay pedidos registrados</td>
-			</tr>
-			</tbody>
+                <tr th:if="${#lists.isEmpty(pedidos)}">
+                    <td colspan="6">No hay pedidos registrados</td>
+                </tr>
+            </tbody>
         </table>
 
     </div>
